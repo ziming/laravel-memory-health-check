@@ -7,7 +7,7 @@
 
 Memory Usage Health Check for Spatie Laravel Health Check Package. In the future I aim to add Memory Load Health Check too.
 
-The Memory usage code is shamelessly copied from Laravel Pulse
+The memory usage code is shamelessly copied from Laravel Pulse
 
 ## Support us
 
