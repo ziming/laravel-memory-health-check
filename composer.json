@@ -37,7 +37,6 @@
     "autoload": {
         "psr-4": {
             "Ziming\\LaravelMemoryHealthCheck\\": "src/",
-            "Ziming\\LaravelMemoryHealthCheck\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
@@ -65,10 +64,7 @@
         "laravel": {
             "providers": [
                 "Ziming\\LaravelMemoryHealthCheck\\LaravelMemoryHealthCheckServiceProvider"
-            ],
-            "aliases": {
-                "LaravelMemoryHealthCheck": "Ziming\\LaravelMemoryHealthCheck\\Facades\\LaravelMemoryHealthCheck"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
