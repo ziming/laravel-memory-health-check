@@ -6,9 +6,12 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ziming/laravel-memory-health-check.svg?style=flat-square)](https://packagist.org/packages/ziming/laravel-memory-health-check)
 
 Memory Usage Health Check for Spatie Laravel Health Check Package. In the future I aim to add Memory Load Health Check too.
+
+The Memory usage code is shamelessly copied from Laravel Pulse
+
 ## Support us
 
-You can donate to my github sponsor or use my affiliate link for [Oh Dear](https://ohdear.app/?via=laravel-health-memory). This comes at no extra cost to you and helps support my open source work.
+You can donate to my github sponsor or use my referral link for [Oh Dear](https://ohdear.app/?via=laravel-health-memory) so I get a small reward if you become a paid customer in the future. This comes at no extra cost to you and helps support my open source work.
 
 https://ohdear.app/?via=laravel-health-memory
 
