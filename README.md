@@ -45,6 +45,18 @@ Health::checks([
 ]);
 ```
 
+## Screenshots
+
+In Laravel Health, it will look like this
+
+<img width="798" height="280" alt="laravel health memory usage percentage" src="https://github.com/user-attachments/assets/25f4558d-d4f6-40ee-83e3-032332cff7fb" />
+
+In [Oh Dear](https://ohdear.app/?via=laravel-health-memory), it will look like this
+
+<img width="788" height="84" alt="Oh Dear memory usage percentage" src="https://github.com/user-attachments/assets/8fcdf2b6-a11e-4a0e-9cd8-592721deb056" />
+
+<img width="1880" height="614" alt="Oh Dear memory usage percentage event logs" src="https://github.com/user-attachments/assets/0d33e876-75bc-499a-8d43-f78d6795c0be" />
+
 ## Testing
 
 ```bash
