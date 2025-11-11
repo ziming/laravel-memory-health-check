@@ -12,7 +12,7 @@
         {
             "name": "ziming",
             "email": "ziming.opensource@gmail.com",
-            "role": "Developer"
+            "role": "Package Uploader"
         }
     ],
     "require": {
@@ -36,7 +36,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ziming\\LaravelMemoryHealthCheck\\": "src/",
+            "Ziming\\LaravelMemoryHealthCheck\\": "src/"
         }
     },
     "autoload-dev": {
