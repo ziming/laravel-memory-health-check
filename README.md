@@ -14,7 +14,7 @@ The memory usage code is shamelessly copied from Laravel Pulse.
 
 Support Darwin, Linux, Windows and BSD based systems.
 
-## Support us
+## Support me
 
 You can donate to my github sponsor or use my referral link for [Oh Dear](https://ohdear.app/?via=laravel-health-memory) so 
 I get a small reward if you become a paid customer in the future. This comes at no extra cost to you and helps support my open source work.
