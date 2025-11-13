@@ -40,8 +40,8 @@ use Ziming\LaravelMemoryHealthCheck\UsedMemoryCheck;
 
 Health::checks([
     UsedMemoryCheck::new()
-        ->warnWhenUsedMemoryIsAbovePercentage(70)
-        ->failWhenUsedMemoryIsAbovePercentage(90),
+        ->warnWhenUsedMemoryIsAbovePercentage(85)
+        ->failWhenUsedMemoryIsAbovePercentage(95),
 ]);
 ```
 

@@ -10,9 +10,9 @@ use Spatie\Health\Checks\Result;
 
 class UsedMemoryCheck extends Check
 {
-    protected int $warningThreshold = 70;
+    protected int $warningThreshold = 85;
 
-    protected int $errorThreshold = 90;
+    protected int $errorThreshold = 95;
 
     public function run(): Result
     {
