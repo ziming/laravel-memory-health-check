@@ -14,6 +14,9 @@ The memory usage code is shamelessly copied from Laravel Pulse.
 
 Support Darwin, Linux, Windows and BSD based systems.
 
+You may also wish to check out my other Laravel Health related packages that fills in the missing gaps in Laravel Health and Oh Dear monitoring:
+- [Domain Health Check](https://github.com/ziming/laravel-domain-health-check)
+
 ## Support me
 
 You can donate to my github sponsor or use my referral link for [Oh Dear](https://ohdear.app/?via=laravel-health-memory) so 
