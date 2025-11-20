@@ -60,13 +60,6 @@
             "phpstan/extension-installer": true
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Ziming\\LaravelMemoryHealthCheck\\LaravelMemoryHealthCheckServiceProvider"
-            ]
-        }
-    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
