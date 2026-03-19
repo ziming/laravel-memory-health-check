@@ -59,7 +59,7 @@ class UsedMemoryCheck extends Check
         $memoryTotal = match (PHP_OS_FAMILY) {
             'Darwin' => intval(`sysctl hw.memsize | grep -Eo '[0-9]+'` / 1024 / 1024),
             'Linux' => intval(`cat /proc/meminfo | grep MemTotal | grep -E -o '[0-9]+'` / 1024),
-            'Windows' => intval(((int) trim(`wmic ComputerSystem get TotalPhysicalMemory | more +1`)) / 1024 / 1024),
+            'Windows' => self::getWindowsTotalMemoryMB(),
             'BSD' => intval(`sysctl hw.physmem | grep -Eo '[0-9]+'` / 1024 / 1024),
             default => throw new RuntimeException('The memory usage health check does not currently support '.PHP_OS_FAMILY),
         };
@@ -67,7 +67,7 @@ class UsedMemoryCheck extends Check
         $memoryUsed = match (PHP_OS_FAMILY) {
             'Darwin' => $memoryTotal - intval(intval(`vm_stat | grep 'Pages free' | grep -Eo '[0-9]+'`) * intval(`pagesize`) / 1024 / 1024), // MB
             'Linux' => $memoryTotal - intval(`cat /proc/meminfo | grep MemAvailable | grep -E -o '[0-9]+'` / 1024), // MB
-            'Windows' => $memoryTotal - intval(((int) trim(`wmic OS get FreePhysicalMemory | more +1`)) / 1024), // MB
+            'Windows' => $memoryTotal - self::getWindowsFreeMemoryMB(), // MB
             'BSD' => intval(intval(`( sysctl vm.stats.vm.v_cache_count | grep -Eo '[0-9]+' ; sysctl vm.stats.vm.v_inactive_count | grep -Eo '[0-9]+' ; sysctl vm.stats.vm.v_active_count | grep -Eo '[0-9]+' ) | awk '{s+=$1} END {print s}'`) * intval(`pagesize`) / 1024 / 1024), // MB
             default => throw new RuntimeException('The memory usage health check does not currently support '.PHP_OS_FAMILY),
         };
@@ -76,6 +76,35 @@ class UsedMemoryCheck extends Check
             'total' => $memoryTotal,
             'used' => $memoryUsed,
         ];
+    }
+
+    private static function getWindowsTotalMemoryMB(): int
+    {
+        // Try PowerShell CIM first — wmic is deprecated and removed in Windows 11 24H2+
+        $output = shell_exec('powershell -NoProfile -Command "(Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory"');
+        if ($output !== null && is_numeric(trim($output))) {
+            return intval(intval(trim($output)) / 1024 / 1024);
+        }
+
+        // Fall back to wmic for older Windows versions
+        $wmicOutput = shell_exec('wmic ComputerSystem get TotalPhysicalMemory | more +1');
+
+        return intval(trim($wmicOutput ?? '0') / 1024 / 1024);
+    }
+
+    private static function getWindowsFreeMemoryMB(): int
+    {
+        // Try PowerShell CIM first — wmic is deprecated and removed in Windows 11 24H2+
+        // FreePhysicalMemory from Win32_OperatingSystem is in KB
+        $output = shell_exec('powershell -NoProfile -Command "(Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory"');
+        if ($output !== null && is_numeric(trim($output))) {
+            return intval(intval(trim($output)) / 1024);
+        }
+
+        // Fall back to wmic for older Windows versions
+        $wmicOutput = shell_exec('wmic OS get FreePhysicalMemory | more +1');
+
+        return intval(trim($wmicOutput ?? '0') / 1024);
     }
 
     protected function getMemoryUsagePercentage(?array $memoryUsageStats = null): float
