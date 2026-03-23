@@ -89,7 +89,7 @@ class UsedMemoryCheck extends Check
         // Fall back to wmic for older Windows versions
         $wmicOutput = shell_exec('wmic ComputerSystem get TotalPhysicalMemory | more +1');
 
-        return intval(trim($wmicOutput ?? '0') / 1024 / 1024);
+        return intval(intval(trim($wmicOutput ?? '0')) / 1024 / 1024);
     }
 
     private static function getWindowsFreeMemoryMB(): int
@@ -104,7 +104,7 @@ class UsedMemoryCheck extends Check
         // Fall back to wmic for older Windows versions
         $wmicOutput = shell_exec('wmic OS get FreePhysicalMemory | more +1');
 
-        return intval(trim($wmicOutput ?? '0') / 1024);
+        return intval(intval(trim($wmicOutput ?? '0')) / 1024);
     }
 
     protected function getMemoryUsagePercentage(?array $memoryUsageStats = null): float
