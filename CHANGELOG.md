@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-memory-health-check` will be documented in this file.
 
+## 1.1.2 - 2026-04-04
+
+### What's Changed
+
+* Replaced backtick alias with shell_exec by @lasselehtinen in https://github.com/ziming/laravel-memory-health-check/pull/10
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/ziming/laravel-memory-health-check/pull/9
+
+### New Contributors
+
+* @lasselehtinen made their first contribution in https://github.com/ziming/laravel-memory-health-check/pull/10
+
+**Full Changelog**: https://github.com/ziming/laravel-memory-health-check/compare/1.1.1...1.1.2
+
 ## Fix memory check on Windows 11 24H2+ - 2026-03-28
 
 ### What's Changed
