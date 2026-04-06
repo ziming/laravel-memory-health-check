@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-memory-health-check` will be documented in this file.
 
+## Some cleanup - 2026-04-06
+
+**Full Changelog**: https://github.com/ziming/laravel-memory-health-check/compare/1.1.2...1.1.3
+
 ## 1.1.2 - 2026-04-04
 
 ### What's Changed
